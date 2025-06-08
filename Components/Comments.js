@@ -23,7 +23,7 @@ function Comments({ id }) {
   const [textAreaHeight, setTextAreaHeight] = useState(100);
 
   const { mutate } = useSWRConfig();
-  const { data, error } = useSWR(`/api/comments/${id}`, fetcher);
+  const { data, error } = useSWR(`/blogs/api/comments/${id}`, fetcher);
   const user = useSelector((state) => state.user);
 
   const handleDeleteComment = async (commentId) => {
@@ -52,7 +52,7 @@ function Comments({ id }) {
         setViewAlert(false);
       }, 2000);
 
-      mutate(`/api/comments/${id}`);
+      mutate(`/blogs/api/comments/${id}`);
     }
   };
 
@@ -96,7 +96,7 @@ function Comments({ id }) {
       setTimeout(() => {
         setViewAlert(false);
       }, 2000);
-      mutate(`/api/comments/${id}`);
+      mutate(`/blogs/api/comments/${id}`);
     }
   };
 

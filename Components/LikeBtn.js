@@ -10,11 +10,11 @@ function LikeBtn({ id }) {
 
   const [loading, setLoading] = useState(false);
   const { mutate } = useSWRConfig();
-  const { data, error } = useSWR(`/api/likes/${id}`, fetcher);
+  const { data, error } = useSWR(`/blogs/api/likes/${id}`, fetcher);
 
   const handelClick = async () => {
     setLoading(true);
-    const response = await fetch("/api/like-blog", {
+    const response = await fetch("/blogs/api/like-blog", {
       method: "POST",
       body: JSON.stringify({ id }),
       headers: {
@@ -23,7 +23,7 @@ function LikeBtn({ id }) {
     });
 
     if (response.status === 200) {
-      mutate(`/api/likes/${id}`);
+      mutate(`/blogs/api/likes/${id}`);
       setLoading(false);
     } else {
       setLoading(false);
